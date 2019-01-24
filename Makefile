@@ -8,7 +8,7 @@ all:
 	make install-pkg
 
 install-pkg:
-	R CMD INSTALL --preclean Matrix
+	echo 'dir.create(unlist(strsplit(Sys.getenv("R_LIBS_USER"), .Platform\$$path.sep))[1L], recursive = TRUE)' | R --slave
 	./install-pkg-TMB.sh
 	./install-pkg-rgdal.sh
 	./install-pkg-DATRAS.sh  
