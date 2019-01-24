@@ -11,5 +11,5 @@ install-pkg:
 	./make_pkg_folder.sh
 	./install-pkg-TMB.sh
 	./install-pkg-rgdal.sh
-	./install-pkg-DATRAS.sh  
+	# ./install-pkg-DATRAS.sh
 	./install-common-pkg.sh

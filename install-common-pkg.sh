@@ -28,3 +28,7 @@ devtools::install_github('kaskr/gridConstruct',subdir='gridConstruct')
 echo "
 devtools::install_github('glmmTMB/glmmTMB/glmmTMB')
 " | R --vanilla
+
+echo "
+devtools::install_github('DTUAqua/DATRAS/DATRAS')
+" | R --vanilla
