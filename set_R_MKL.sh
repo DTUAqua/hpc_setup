@@ -1,3 +1,3 @@
 #!/bin/sh
-rm ${HOME}/bin/R
-ln -s ${HOME}/hpc_setup/build/bin/R  ${HOME}/bin/R
+rm -f ${HOME}/bin/R
+ln -s /apps/dcc/bin/R-3.5.2-mkl-sl64 ${HOME}/bin/R

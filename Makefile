@@ -2,7 +2,7 @@
 
 all:
 	./set_local_bin.sh
-	./build_R_MKL.sh
+	# ./build_R_MKL.sh
 	./set_R_MKL.sh
 	./set_Makevars.sh
 	make install-pkg
