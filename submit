@@ -1,38 +1,40 @@
 #!/bin/sh
 
 ## Default parameters
-MAX_DURATION="${MAX_DURATION:-08:00:00}"
-MAX_MEMORY="${MAX_MEMORY:-8gb}"
+MAX_DURATION="${MAX_DURATION:-08:00}"
+MAX_MEMORY="${MAX_MEMORY:-8GB}"
 OMP_NUM_THREADS="${OMP_NUM_THREADS:-1}"
 MC_CORES="${MC_CORES:-1}"
 
 ## Additional parameters
 QWAIT="${QWAIT:-0}"
-NOTIFICATION="${NOTIFICATION:-a}"
+## NOTIFICATION="${NOTIFICATION:-a}"
 QUEUE="${QUEUE:-hpc}"
 
 # Message
 echo "Job parameters"
 echo "=============="
 echo
-echo "MAX_DURATION    = $MAX_DURATION  (hh:mm:ss)"
+echo "MAX_DURATION    = $MAX_DURATION  (hh:mm)"
 echo "MAX_MEMORY      = $MAX_MEMORY"
 echo "OMP_NUM_THREADS = $OMP_NUM_THREADS"
 echo "MC_CORES        = $MC_CORES"
 echo
 
-JOBID=`
+JOB_INFO=`
 echo "
-# embedded options to qsub - start with #PBS
-#PBS -N Job
-#PBS -l walltime=$MAX_DURATION
-#PBS -l mem=$MAX_MEMORY
-#PBS -l nodes=1:ppn=$(( $OMP_NUM_THREADS * $MC_CORES ))
-#PBS -m $NOTIFICATION
-#PBS -q $QUEUE
+### -- embedded options to bsub - start with #BSUB
+#BSUB -J Job
+#BSUB -W $MAX_DURATION
+### -- specify memory per core/slot (FIXME?)
+#BSUB -R "rusage[mem=$MAX_MEMORY]"
+#BSUB -n $(( $OMP_NUM_THREADS * $MC_CORES ))
+#BSUB -R "span[hosts=1]"
+### -- Deprecated #PBS -m $NOTIFICATION
+#BSUB -q $QUEUE
 
-# -- run in the current working (submission) directory --
-# cd $PBS_O_WORKDIR <--- didn't work !
+### -- run in the current working (submission) directory --
+### -- cd $PBS_O_WORKDIR <--- didn't work !
 cd $PWD
 
 ## Reduce time spent in gc
@@ -47,15 +49,19 @@ cat /proc/cpuinfo
 env
 
 $*
-" | qsub
+" | bsub
 `
+
+## echo $JOB_INFO
+JOBID=`echo $JOB_INFO | sed 's/Job..//g' | sed 's/>.*//g'`
+## echo $JOBID
 
 if [ $QWAIT == 1 ]
 then
   echo "Waiting for $JOBID"
   while true
   do
-    if ! qstat | grep $JOBID | grep -q "\ [Q|R]\ "
+    if ! `bstat | grep -q $JOBID`
     then
       echo "completed $JOBID"
       exit 0

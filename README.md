@@ -7,7 +7,7 @@ Setup R and relevant packages for a DTU HPC account ( http://www.hpc.dtu.dk ) .
 Login to your account
 
 ```shell
-ssh $USER@login.gbar.dtu.dk
+ssh $USER@login2.gbar.dtu.dk
 qrsh
 ```
 
