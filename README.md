@@ -1,6 +1,7 @@
 ## DTU HPC setup
 
 Setup R and relevant packages for a DTU HPC account ( http://www.hpc.dtu.dk ) .
+Update: Now works with new [LSF](https://www.hpc.dtu.dk/?page_id=2534) queue system.
 
 ### Get Started
 
