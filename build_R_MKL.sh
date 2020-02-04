@@ -3,13 +3,14 @@
 VERSION=3.6.2
 RVERSION=R-$VERSION
 TARBALL=$RVERSION.tar.gz
+GCC=gcc/9.2.0
 
 INCLUDES=/appl/R/$VERSION/include
 LIBS=/appl/R/$VERSION/lib
 
 ## Load modules (sets MKLROOT etc)
 module load intel/2017.4.196.mkl
-## module load gcc/6.3.0
+module load $GCC
 
 wget https://cloud.r-project.org/src/base/R-3/$TARBALL
 tar zxf $TARBALL
@@ -17,7 +18,7 @@ tar zxf $TARBALL
 ## Patch R wrapper script:
 head -n 3 $RVERSION/src/scripts/R.sh.in > tmp_file
 echo "module load intel/2017.4.196.mkl" >> tmp_file
-echo "module load gcc/9.2.0" >> tmp_file
+echo "module load $GCC" >> tmp_file
 echo >> tmp_file
 tail -n +3 $RVERSION/src/scripts/R.sh.in >> tmp_file
 mv tmp_file $RVERSION/src/scripts/R.sh.in
