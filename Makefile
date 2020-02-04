@@ -12,5 +12,6 @@ install-pkg:
 	./install-pkg-devtools.sh
 	./install-pkg-TMB.sh
 	./install-pkg-rgdal.sh
-	./install-pkg-DATRAS.sh  
+	./install-pkg-DATRAS.sh
+	./install-pkg-gridConstruct.sh
 	./install-common-pkg.sh
