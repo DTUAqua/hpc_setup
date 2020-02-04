@@ -12,6 +12,12 @@ ssh $USER@login2.gbar.dtu.dk
 qrsh
 ```
 
+Before starting it is recommended to move/remove `~/.R/Makevars` if it exists:
+
+```shell
+mv ~/.R/Makevars ~/.R/Makevars.backup
+```
+
 Clone this repo to your home folder and run the main script
 
 ```shell
