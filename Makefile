@@ -8,7 +8,7 @@ all:
 	make install-pkg
 
 install-pkg:
-	echo 'dir.create(unlist(strsplit(Sys.getenv("R_LIBS_USER"), .Platform\$$path.sep))[1L], recursive = TRUE)' | R --slave
+	./create_local_pkg_folder.sh
 	./install-pkg-devtools.sh
 	./install-pkg-TMB.sh
 	./install-pkg-rgdal.sh
