@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo "install.packages('DATRAS',repos='http://www.rforge.net/',type='source')" | R --vanilla
+echo "devtools::install_github('DTUAqua/DATRAS/DATRAS')" | R --vanilla
