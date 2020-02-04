@@ -17,7 +17,7 @@ tar zxf $TARBALL
 ## Patch R wrapper script:
 head -n 3 $RVERSION/src/scripts/R.sh.in > tmp_file
 echo "module load intel/2017.4.196.mkl" >> tmp_file
-echo "module load gcc/6.3.0" >> tmp_file
+echo "module load gcc/9.2.0" >> tmp_file
 echo >> tmp_file
 tail -n +3 $RVERSION/src/scripts/R.sh.in >> tmp_file
 mv tmp_file $RVERSION/src/scripts/R.sh.in
@@ -27,6 +27,6 @@ MKL="-fopenmp -m64 -I$MKLROOT/include -L$MKLROOT/lib/intel64 -lmkl_gf_lp64 -lmkl
 mkdir -p build
 
 cd build
-../$RVERSION/configure SAFE_FFLAGS="-g -O2 -fomit-frame-pointer -ffloat-store" CPPFLAGS="-I$INCLUDES -I/usr/local/include" LDFLAGS="-L$LIBS -L/usr/local/lib64" --with-blas="$MKL" --with-lapack
+../$RVERSION/configure CXX14STD="-std=gnu++14" CXX17STD="-std=gnu++17" SAFE_FFLAGS="-g -O2 -fomit-frame-pointer -ffloat-store" CPPFLAGS="-I$INCLUDES -I/usr/local/include" LDFLAGS="-L$LIBS -L/usr/local/lib64" --with-blas="$MKL" --with-lapack
 
 make
