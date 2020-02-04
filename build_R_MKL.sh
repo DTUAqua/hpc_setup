@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=3.4.1
+VERSION=3.6.2
 RVERSION=R-$VERSION
 TARBALL=$RVERSION.tar.gz
 
@@ -27,6 +27,6 @@ MKL="-fopenmp -m64 -I$MKLROOT/include -L$MKLROOT/lib/intel64 -lmkl_gf_lp64 -lmkl
 mkdir -p build
 
 cd build
-../$RVERSION/configure CPPFLAGS="-I$INCLUDES -I/usr/local/include" LDFLAGS="-L$LIBS -L/usr/local/lib64" --with-blas="$MKL" --with-lapack
+../$RVERSION/configure SAFE_FFLAGS="-g -O2 -fomit-frame-pointer -ffloat-store" CPPFLAGS="-I$INCLUDES -I/usr/local/include" LDFLAGS="-L$LIBS -L/usr/local/lib64" --with-blas="$MKL" --with-lapack
 
 make
