@@ -9,6 +9,7 @@ all:
 
 install-pkg:
 	echo 'dir.create(unlist(strsplit(Sys.getenv("R_LIBS_USER"), .Platform\$$path.sep))[1L], recursive = TRUE)' | R --slave
+	./install-pkg-devtools.sh
 	./install-pkg-TMB.sh
 	./install-pkg-rgdal.sh
 	./install-pkg-DATRAS.sh  
