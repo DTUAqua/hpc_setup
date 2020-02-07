@@ -15,5 +15,7 @@ echo "install.packages(c(
 'fields',
 'rstan',
 'knitr',
-'ggplot2'
+'ggplot2',
+'dplyr',
+'data.table'
 ),repos='$REPOS')" | R --vanilla
