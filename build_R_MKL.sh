@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=3.6.2
+VERSION=4.0.2
 RVERSION=R-$VERSION
 TARBALL=$RVERSION.tar.gz
 GCC=gcc/9.2.0
@@ -12,7 +12,7 @@ LIBS=/appl/R/$VERSION/lib
 module load intel/2017.4.196.mkl
 module load $GCC
 
-wget https://cloud.r-project.org/src/base/R-3/$TARBALL
+wget https://cloud.r-project.org/src/base/R-4/$TARBALL
 tar zxf $TARBALL
 
 ## Patch R wrapper script:
@@ -28,6 +28,6 @@ MKL="-fopenmp -m64 -I$MKLROOT/include -L$MKLROOT/lib/intel64 -lmkl_gf_lp64 -lmkl
 mkdir -p build
 
 cd build
-../$RVERSION/configure CXX14STD="-std=gnu++14" CXX17STD="-std=gnu++17" SAFE_FFLAGS="-g -O2 -fomit-frame-pointer -ffloat-store" CPPFLAGS="-I$INCLUDES -I/usr/local/include" LDFLAGS="-L$LIBS -L/usr/local/lib64" --with-blas="$MKL" --with-lapack
+../$RVERSION/configure CXX14STD="-std=gnu++14" CXX17STD="-std=gnu++17" SAFE_FFLAGS="-g -O2 -fomit-frame-pointer -ffloat-store" CPPFLAGS="-I$INCLUDES -I/usr/local/include" LDFLAGS="-L$LIBS -L/usr/local/lib64" --with-blas="$MKL" --with-lapack --with-pcre1
 
 make
