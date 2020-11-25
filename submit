@@ -32,6 +32,8 @@ echo "
 #BSUB -R "span[hosts=1]"
 ### -- Deprecated #PBS -m $NOTIFICATION
 #BSUB -q $QUEUE
+### -- Applicable if GPU queue is requested:
+#BSUB -gpu "num=1:mode=exclusive_process"
 
 ### -- run in the current working (submission) directory --
 ### -- cd $PBS_O_WORKDIR <--- didn't work !
