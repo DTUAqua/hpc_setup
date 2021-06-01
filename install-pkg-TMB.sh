@@ -4,7 +4,7 @@ if [ ! -d adcomp ]; then
     git clone https://github.com/kaskr/adcomp
 fi
 
-cd adcomp; git pull
+cd adcomp && git pull && git clean -xdf
 
 make install-metis-full
 
