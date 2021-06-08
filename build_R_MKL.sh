@@ -17,8 +17,8 @@ tar zxf $TARBALL
 
 ## Patch R wrapper script:
 head -n 3 $RVERSION/src/scripts/R.sh.in > tmp_file
-echo "module load intel/2017.4.196.mkl" >> tmp_file
-echo "module load $GCC geos/3.8.2 gdal/3.2.0 udunits2/2.2.26" >> tmp_file
+echo "module load intel/2017.4.196.mkl 2> /dev/null" >> tmp_file
+echo "module load $GCC geos/3.8.2 gdal/3.2.0 udunits2/2.2.26 2> /dev/null" >> tmp_file
 echo >> tmp_file
 tail -n +3 $RVERSION/src/scripts/R.sh.in >> tmp_file
 mv tmp_file $RVERSION/src/scripts/R.sh.in
