@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo "devtools::install_github('DTUAqua/DATRAS/DATRAS')" | R --vanilla
+echo "remotes::install_github('DTUAqua/DATRAS/DATRAS')" | R --vanilla

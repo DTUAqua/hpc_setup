@@ -9,7 +9,7 @@ all:
 
 install-pkg:
 	./create_local_pkg_folder.sh
-	./install-pkg-devtools.sh
+	./install-pkg-remotes.sh
 	./install-pkg-TMB.sh
 	./install-pkg-rgdal.sh
 	./install-pkg-units.sh

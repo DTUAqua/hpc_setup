@@ -4,5 +4,5 @@ REPOS="https://cloud.r-project.org"
 
 
 echo "install.packages(c(
-'devtools'
+'remotes'
 ),repos='$REPOS')" | R --vanilla
