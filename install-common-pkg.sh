@@ -6,23 +6,23 @@ module load cmake/3.23.1
 module load proj/8.2.1
 
 
-echo "install.packages('nloptr, terra', repos='$REPOS')" | R --vanilla
+echo "install.packages(c('nloptr, terra'), repos='$REPOS')" | R --vanilla
 
 module unload cmake/3.23.1
 module unload proj/8.2.1
 
 echo "install.packages(c(
 'glmmTMB',
-'tmbstan',
-'raster',
+#'tmbstan',
+#'raster',
 'maps',
 'mapdata',
 'rgeos',
 'geosphere',
 'maptools',
-'plyr',
+#'plyr',
 'fields',
-'rstan',
+#'rstan',
 'knitr',
 'ggplot2',
 'dplyr',

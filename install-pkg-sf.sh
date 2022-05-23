@@ -4,7 +4,7 @@ REPOS="https://cloud.r-project.org"
 
 ##module load geos/3.8.2
 ##module load gdal/3.2.0
-module load udunits/2.2.20
+module load udunits2/2.2.20
 
 ##export LD_LIBRARY_PATH=/appl/proj/4.9.3/lib:$LD_LIBRARY_PATH
 ##export PKG_CPPFLAGS="-I/appl/proj/4.9.3/include $CPPFLAGS"
